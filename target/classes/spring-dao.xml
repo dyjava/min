@@ -6,7 +6,7 @@
 		destroy-method="close">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
 		<property name="url"
-			value="jdbc:mysql://localhost:3306/sys?useUnicode=true&amp;characterEncoding=UTF-8&amp;autoReconnect=true" />
+			value="jdbc:mysql://localhost:3306/member?useUnicode=true&amp;characterEncoding=UTF-8&amp;autoReconnect=true" />
 		<property name="username" value="root" />
 		<property name="password" value="root" />
 		<!-- 初始化连接 -->

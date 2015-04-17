@@ -2,9 +2,12 @@ package com.sys.applet.main.min;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.util.List;
 
 import javax.swing.JButton;
+import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
@@ -38,6 +41,10 @@ public class SearchPanel extends CommonPanel{
         
         init() ;
         super.printFormModel() ;
+
+    	for(JComponent item:fieldList){
+    		((JTextField)item).setEnabled(false);;
+    	}
    }
 
     /**
@@ -45,6 +52,11 @@ public class SearchPanel extends CommonPanel{
      * @param e
      */
     private void submitAction(ActionEvent e) {
+
+    	for(JComponent item:fieldList){
+    		((JTextField)item).setText("") ;
+    	}
+    	
     	String id = searchid.getText() ;
     	if(id.trim().length()==0){
     		String message = "请填写查询卡号" ;
@@ -65,4 +77,24 @@ public class SearchPanel extends CommonPanel{
             submitAction(e);
         }
     }
+
+
+//  按键监控，取回车键提交
+  class EnterKeyListener implements KeyListener{
+		public void keyPressed(KeyEvent e) {
+			int code = e.getKeyCode() ;
+			if(code==10){
+				submitAction(null) ;
+			}
+		}
+	
+		public void keyReleased(KeyEvent e) {
+			
+		}
+	
+		public void keyTyped(KeyEvent e) {
+			
+		}
+  }
+
 }
