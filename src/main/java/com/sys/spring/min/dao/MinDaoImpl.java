@@ -3,13 +3,12 @@ package com.sys.spring.min.dao;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.sys.spring.account.domain.Kind;
 import com.sys.spring.dao.AbstractDBDao;
 import com.sys.spring.min.domain.Message;
 import com.sys.util.Logs;
 
 public class MinDaoImpl extends AbstractDBDao implements MinDao {
-	private String table = "kind" ;
+	private String table = "member" ;
 	
 	@Override
 	public int insertMessage(Message msg) {
@@ -17,7 +16,7 @@ public class MinDaoImpl extends AbstractDBDao implements MinDao {
 		StringBuffer buf = new StringBuffer() ;
 		buf.append(this.getClass().getName()).append("|").append("insertKind") ;
 		
-		String sql = "insert into kind (uid,title,note,parentId) values(?,?,?,?)" ;
+		String sql = "insert into member (uid,title,note,parentId) values(?,?,?,?)" ;
 		ArrayList<Object> params = new ArrayList<Object>() ;
 //		params.add(kind.getUid()) ;
 //		params.add(kind.getTitle()) ;
@@ -40,7 +39,7 @@ public class MinDaoImpl extends AbstractDBDao implements MinDao {
 		StringBuffer buf = new StringBuffer() ;
 		buf.append(this.getClass().getName()).append("|").append("findKindListByParentId") ;
 		
-		String sql = "select * from kind where parentId = ? ";
+		String sql = "select * from member where parentId = ? ";
 		
 		List<Message> list = this.selectList(sql, new Object[] {""}, Message.class) ;
 		

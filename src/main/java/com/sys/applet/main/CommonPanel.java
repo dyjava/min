@@ -13,9 +13,11 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextArea;
+import javax.swing.JTextField;
 
 import com.sys.applet.util.XYConstraints;
 import com.sys.applet.util.XYLayout;
+import com.sys.spring.min.domain.Message;
 
 /** 
  * by dyong 2010-9-21
@@ -49,10 +51,10 @@ public class CommonPanel extends JPanel {
 	  */
 	 public void printFormModel(){
 		 Font font = new Font("宋体", Font.PLAIN, 12) ;	//标签字体
-		 int x_lab = 80 ;	//标签的X坐标
-		 int x_text = 120 ;	//输入框的X坐标
+		 int x_lab = 200 ;	//标签的X坐标
+		 int x_text = 260 ;	//输入框的X坐标
 		 int height_dif = 30 ;	//行间距
-		 int y_start = 20 ;	//起始行Y坐标
+		 int y_start = 50 ;	//起始行Y坐标
 		 
 		 int y = 20 ;	//当前行Y坐标
 		 for(int i=0;i<labList.size();i++){
@@ -68,10 +70,10 @@ public class CommonPanel extends JPanel {
 				 if(item instanceof JTextArea){
 //					 item.setLineWrap(true) ;
 					 item.setBackground(new Color(40,200,58)) ;
-					 this.add(item, new XYConstraints(x_text, y_line, 500, 300));
+					 this.add(item, new XYConstraints(x_text, y_line, 300, 300));
 					 y_line +=300 ;
 				 } else {
-					 this.add(item, new XYConstraints(x_text, y_line, 100, 20));
+					 this.add(item, new XYConstraints(x_text, y_line, 250, 20));
 				 }
 			 }
 			 if(y < y_line){
@@ -80,7 +82,7 @@ public class CommonPanel extends JPanel {
 		 }
 		 
 		 for(int i=0;i<buttonList.size();i++){
-			 this.add(buttonList.get(i), new XYConstraints(100+i*100, height_dif+y, -1, -1));
+			 this.add(buttonList.get(i), new XYConstraints(x_lab+i*100, height_dif+y, -1, -1));
 		 }
 	 }
 	 
@@ -125,4 +127,97 @@ public class CommonPanel extends JPanel {
 	 protected void showMessageDialog(String message){
 		 JOptionPane.showMessageDialog(this, message) ;
 	 }
+	 
+//   text
+	public JTextField cardid = new JTextField();
+	public JTextField name = new JTextField();
+	public JTextField address = new JTextField();
+	public JTextField person = new JTextField();
+	public JTextField type = new JTextField();
+	
+	public JTextField ctime = new JTextField();
+	public JTextField cmoney = new JTextField();
+	public JTextField ctype = new JTextField();
+	public JTextField cage = new JTextField();
+	public JTextField used = new JTextField();
+	
+	public JTextField area = new JTextField();
+	public JTextField web = new JTextField();
+	public JTextField tel = new JTextField();
+	public JTextField cz = new JTextField();
+	public JTextField email = new JTextField();
+	
+	public JTextField weixin = new JTextField();
+	public JTextField num = new JTextField();
+	public JTextField others = new JTextField();
+
+	protected void init(){
+    	labList.add(new JLabel("卡号")) ;
+    	labList.add(new JLabel("企业名称")) ;
+    	labList.add(new JLabel("地址")) ;
+    	labList.add(new JLabel("法人代表")) ;
+    	labList.add(new JLabel("行业类别")) ;
+    	
+    	labList.add(new JLabel("注册时间")) ;
+    	labList.add(new JLabel("注册资金")) ;
+    	labList.add(new JLabel("企业性质")) ;
+    	labList.add(new JLabel("经营年限")) ;
+    	labList.add(new JLabel("业务范围")) ;
+    	
+    	labList.add(new JLabel("业务区域")) ;
+    	labList.add(new JLabel("公司网站")) ;
+    	labList.add(new JLabel("联系电话")) ;
+    	labList.add(new JLabel("传真")) ;
+    	labList.add(new JLabel("邮箱")) ;
+    	
+    	labList.add(new JLabel("微信")) ;
+    	labList.add(new JLabel("员工人数")) ;
+    	labList.add(new JLabel("其他信息")) ;
+    	
+        fieldList.add(cardid) ;
+        fieldList.add(name) ;
+        fieldList.add(address) ;
+        fieldList.add(person) ;
+        fieldList.add(type) ;
+
+        fieldList.add(ctime) ;
+        fieldList.add(cmoney) ;
+        fieldList.add(ctype) ;
+        fieldList.add(cage) ;
+        fieldList.add(used) ;
+
+        fieldList.add(area) ;
+        fieldList.add(web) ;
+        fieldList.add(tel) ;
+        fieldList.add(cz) ;
+        fieldList.add(email) ;
+
+        fieldList.add(weixin) ;
+        fieldList.add(num) ;
+        fieldList.add(others) ;
+	}
+
+	protected Message getData(){
+		Message msg = new Message() ;
+		msg.setAddress(address.getText());
+		msg.setArea(area.getText()) ;
+		msg.setCage(cage.getText()) ;
+    	msg.setCardid(cardid.getText());
+    	msg.setCmoney(cmoney.getText());
+    	msg.setCtime(ctime.getText());
+    	msg.setCtype(ctype.getText());
+    	msg.setCz(cz.getText());
+    	msg.setEmail(email.getText());
+    	msg.setName(name.getText());
+    	msg.setNum(num.getText());
+    	msg.setOthers(others.getText());
+    	msg.setPerson(person.getText());
+    	msg.setTel(tel.getText());
+    	msg.setType(type.getText());
+    	msg.setUsed(used.getText());
+    	msg.setWeb(web.getText());
+    	msg.setWeixin(weixin.getText());
+    	
+    	return msg ;
+	}
 }

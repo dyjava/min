@@ -1,8 +1,9 @@
 package com.sys.spring.min.domain;
 
 public class Message {
-	
+
 	private String id ="" ;			//ID
+	private String cardid ="" ;		//ID
 	private String name = "" ;		//企业名称
 	private String address = "" ;	//地址
 	private String person = "" ;	//法人代表
@@ -127,6 +128,12 @@ public class Message {
 	}
 	public void setOthers(String others) {
 		this.others = others;
+	}
+	public String getCardid() {
+		return cardid;
+	}
+	public void setCardid(String cardid) {
+		this.cardid = cardid;
 	}
 
 
