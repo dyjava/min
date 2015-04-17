@@ -2,26 +2,17 @@ package com.sys.applet.main.min;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import javax.swing.JButton;
-import javax.swing.JComboBox;
 import javax.swing.JLabel;
-import javax.swing.JTable;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 import com.sys.applet.ConstService;
 import com.sys.applet.main.CommonPanel;
-import com.sys.applet.util.DateChooserJTextField;
-import com.sys.applet.util.DoubleUtil;
-import com.sys.applet.util.TableFactory;
-import com.sys.spring.account.domain.Account;
-import com.sys.spring.account.domain.Kind;
+import com.sys.applet.util.XYConstraints;
+import com.sys.spring.min.domain.Message;
 
 /** 
  * by dyong 2010-9-1
@@ -29,15 +20,24 @@ import com.sys.spring.account.domain.Kind;
 public class SearchPanel extends CommonPanel{
 	private static final long serialVersionUID = 8094222460871915784L;
 	
-	JComboBox kindBox = new JComboBox();
-    JTextField beginTimeText = new DateChooserJTextField();
-    JTextField endTimeText = new DateChooserJTextField();
+	private JTextField searchid = new JTextField();
         
     public SearchPanel() {
-    	super.init();
-    	
-    	super.printFormModel() ;
-        cardid.grabFocus() ;
+    	fieldList.add(new JLabel("查询卡号：")) ;
+    	fieldList.add(searchid) ;
+
+        JButton submitBut = new JButton();
+        submitBut.setText("提交");
+        submitBut.addActionListener(new SubmitActionAdapter());
+        fieldList.add(submitBut) ;
+        
+        super.printSearchTableModel() ;
+        searchid.grabFocus() ;
+        
+        this.add(new JLabel("查询结果："), new XYConstraints(200, 30, 100, 20));
+        
+        init() ;
+        super.printFormModel() ;
    }
 
     /**
@@ -45,9 +45,19 @@ public class SearchPanel extends CommonPanel{
      * @param e
      */
     private void submitAction(ActionEvent e) {
-    	String begin = beginTimeText.getText() ;
-    	String end = endTimeText.getText() ;
-
+    	String id = searchid.getText() ;
+    	if(id.trim().length()==0){
+    		String message = "请填写查询卡号" ;
+			JOptionPane.showMessageDialog(this, message) ;
+    	} else {
+	    	Message msg = new Message() ;
+	    	msg.setCardid(id);
+	    	List<Message> list = ConstService.minService.findMessageByMessage(msg) ;
+	    	if(list.size()>0){
+	    		msg = list.get(0) ;
+	    		setData(msg) ;
+	    	}
+    	}
     }
     
     class SubmitActionAdapter implements ActionListener {

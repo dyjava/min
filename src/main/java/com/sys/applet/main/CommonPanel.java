@@ -33,7 +33,7 @@ public class CommonPanel extends JPanel {
 	 
 	 public ArrayList<JButton> buttonList = new ArrayList<JButton>();
 	 
-	 private JScrollPane jScrollPane1 = new JScrollPane();
+	 public JScrollPane jScrollPane1 = new JScrollPane();
 	 public JTable table = new JTable();
 	 public CommonPanel(){
 	     xYLayout1.setWidth(800);
@@ -91,8 +91,8 @@ public class CommonPanel extends JPanel {
 	  * 查询表单 表格
 	  */
 	 public void printSearchTableModel(){
-		 int y = 20 ;		//y坐标
-		 int x_start = 80 ;	//X起始坐标
+		 int y = 10 ;		//y坐标
+		 int x_start = 200 ;	//X起始坐标
 		 int y_hight = 30 ;	//行距间隔
 		 
 		 jScrollPane1.getViewport().setBackground(SystemColor.info);
@@ -109,10 +109,10 @@ public class CommonPanel extends JPanel {
 				 }
 				 if(item instanceof JLabel){
 					 this.add(item, new XYConstraints(x_start+x_dif, y, -1, -1));
-					 x_dif+=50 ;
+					 x_dif+=80 ;
 				 } else if(item instanceof JButton){
 					 this.add(item, new XYConstraints(x_start+x_dif, y, -1, -1));
-					 x_dif+=80 ;
+					 x_dif+=100 ;
 				 } else {
 					 this.add(item, new XYConstraints(x_start+x_dif, y, 100, 20));
 					 x_dif+=120 ;
@@ -121,7 +121,7 @@ public class CommonPanel extends JPanel {
 			y=y+y_hight ;
 		}
 		
-		this.add(jScrollPane1, new XYConstraints(x_start, y, -1, -1));
+//		this.add(jScrollPane1, new XYConstraints(x_start, y, -1, -1));
 	 }
 	 
 	 protected void showMessageDialog(String message){
@@ -152,6 +152,7 @@ public class CommonPanel extends JPanel {
 	public JTextField others = new JTextField();
 
 	protected void init(){
+		labList = new ArrayList<JLabel>();
     	labList.add(new JLabel("卡号")) ;
     	labList.add(new JLabel("企业名称")) ;
     	labList.add(new JLabel("地址")) ;
@@ -174,6 +175,7 @@ public class CommonPanel extends JPanel {
     	labList.add(new JLabel("员工人数")) ;
     	labList.add(new JLabel("其他信息")) ;
     	
+    	fieldList = new ArrayList<JComponent>();
         fieldList.add(cardid) ;
         fieldList.add(name) ;
         fieldList.add(address) ;
@@ -219,5 +221,25 @@ public class CommonPanel extends JPanel {
     	msg.setWeixin(weixin.getText());
     	
     	return msg ;
+	}
+	protected void setData(Message msg){
+		this.address.setText(msg.getAddress());
+		this.area.setText(msg.getArea());
+		this.cage.setText(msg.getCage());
+		this.cardid.setText(msg.getCardid());
+		this.cmoney.setText(msg.getCmoney());
+		this.ctime.setText(msg.getCtime());
+		this.ctype.setText(msg.getCtype());
+		this.cz.setText(msg.getCz());
+		this.email.setText(msg.getEmail());
+		this.name.setText(msg.getName());
+		this.num.setText(msg.getNum());
+		this.others.setText(msg.getOthers());
+		this.person.setText(msg.getPerson());
+		this.tel.setText(msg.getTel());
+		this.type.setText(msg.getType());
+		this.used.setText(msg.getUsed());
+		this.web.setText(msg.getWeb());
+		this.weixin.setText(msg.getWeixin());
 	}
 }

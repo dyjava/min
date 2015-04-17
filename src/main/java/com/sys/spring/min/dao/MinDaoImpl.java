@@ -10,21 +10,24 @@ import com.sys.util.Logs;
 public class MinDaoImpl extends AbstractDBDao implements MinDao {
 	private String table = "member" ;
 	
+	private static Message msg  ;
 	@Override
 	public int insertMessage(Message msg) {
 		long start = System.currentTimeMillis() ;
 		StringBuffer buf = new StringBuffer() ;
 		buf.append(this.getClass().getName()).append("|").append("insertKind") ;
 		
-		String sql = "insert into member (uid,title,note,parentId) values(?,?,?,?)" ;
+		String sql = "insert into "+table+" (uid,title,note,parentId) values(?,?,?,?)" ;
 		ArrayList<Object> params = new ArrayList<Object>() ;
 //		params.add(kind.getUid()) ;
 //		params.add(kind.getTitle()) ;
 //		params.add(kind.getNote()) ;
 //		params.add(kind.getParentId()) ;
 		
+//		this.msg = msg ;
 		int result = this.update(sql, params.toArray()) ;
-
+//		int result =0;
+		
 		buf.append("|").append(sql)
 		.append("|").append(this.list2String(params))
 		.append("|").append(result)
@@ -37,11 +40,12 @@ public class MinDaoImpl extends AbstractDBDao implements MinDao {
 	public List<Message> searchList(Message msg) {
 		long start = System.currentTimeMillis() ;
 		StringBuffer buf = new StringBuffer() ;
-		buf.append(this.getClass().getName()).append("|").append("findKindListByParentId") ;
+		buf.append(this.getClass().getName()).append("|").append("searchList") ;
 		
-		String sql = "select * from member where parentId = ? ";
-		
-		List<Message> list = this.selectList(sql, new Object[] {""}, Message.class) ;
+		String sql = "select * from "+table+" where cardid = ? ";
+		List<Message> list = new ArrayList<Message>() ;
+		list = this.selectList(sql, new Object[] {msg.getCardid()}, Message.class) ;
+//		list.add(this.msg) ;
 		
 		buf.append("|").append(sql)
 		.append("|").append("")

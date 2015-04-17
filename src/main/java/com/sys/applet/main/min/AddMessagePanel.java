@@ -5,11 +5,13 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JComponent;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 import com.sys.applet.ConstService;
 import com.sys.applet.main.CommonPanel;
+import com.sys.applet.util.XYConstraints;
 import com.sys.spring.min.domain.Message;
 import com.sys.spring.min.service.MinService;
 
@@ -24,6 +26,7 @@ public class AddMessagePanel extends CommonPanel{
 	private static final long serialVersionUID = 1L;
 	
     public AddMessagePanel() {
+    	this.add(new JLabel("数据录入"), new XYConstraints(200, 20, 100, 20));
     	//初始化表单
     	init() ;
     	
@@ -63,6 +66,8 @@ public class AddMessagePanel extends CommonPanel{
 			int re = minservice.addMessage(msg) ;
 			if(re==1){
 				message = "添加成功" ;
+			} else {
+				message = "添加失败" ;
 			}
     		clear() ;
     	}
