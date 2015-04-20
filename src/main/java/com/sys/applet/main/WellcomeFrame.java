@@ -31,20 +31,18 @@ public class WellcomeFrame extends JPanel {
         jLabel1.setBackground(Color.lightGray);
         jLabel1.setFont(new java.awt.Font("楷体_GB2312", Font.PLAIN, 20));
         jLabel1.setForeground(Color.red);
-        jLabel1.setText("欢迎使用本系统!");
-        jLabel1.setBounds(new Rectangle(20, 100, 154, 52));
+        jLabel1.setText("欢迎使用会员卡号管理系统!");
+        jLabel1.setBounds(new Rectangle(20, 100, 500, 52));
         this.setBackground(SystemColor.info);
 //        lbtu.setBounds(new Rectangle(0, 0, 521, 391));
-        jLabel2.setText("设计者：邸永");
-        jLabel2.setBounds(new Rectangle(20, 150, 270, 43));
-        jLabel3.setText("设计语言：java");
-        jLabel3.setBounds(new Rectangle(20, 200, 252, 45));
-        jLabel4.setText("设计目的：家庭记账和记事用。");
-        jLabel4.setBounds(new Rectangle(20, 250, 252, 45));
+        jLabel2.setText("使用说明：");
+        jLabel2.setBounds(new Rectangle(20, 150, 300, 43));
+        jLabel3.setText("先通过录入功能，录入信息，再在查询功能界面，通过卡号查询会员信息。");
+        jLabel3.setBounds(new Rectangle(20, 200, 500, 45));
         
         this.add(jLabel1);
-//        this.add(jLabel2);
-//        this.add(jLabel3);
+        this.add(jLabel2);
+        this.add(jLabel3);
 //        this.add(jLabel4);
         
       //添加背景图片

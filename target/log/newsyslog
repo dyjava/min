@@ -1,0 +1,6 @@
+    0 INFO  support.ClassPathXmlApplicationContext - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@b91602: display name [org.springframework.context.support.ClassPathXmlApplicationContext@b91602]; startup date [Mon Apr 20 15:00:57 CST 2015]; root of context hierarchy
+   260 INFO  xml.XmlBeanDefinitionReader - Loading XML bean definitions from class path resource [spring-dao.xml]
+   595 INFO  xml.XmlBeanDefinitionReader - Loading XML bean definitions from class path resource [spring-service.xml]
+   613 INFO  support.ClassPathXmlApplicationContext - Bean factory for application context [org.springframework.context.support.ClassPathXmlApplicationContext@b91602]: org.springframework.beans.factory.support.DefaultListableBeanFactory@acc399
+   764 INFO  support.DefaultListableBeanFactory - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@acc399: defining beans [dataSource,transactionManager,jdbcTemplate,accountDao,incomeDao,diaryDao,kindDao,minDao,userDao,accountService,incomeService,diaryService,kindService,minService,userService]; root of factory hierarchy
+ 
