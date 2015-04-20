@@ -57,33 +57,12 @@ public class MainFrame extends JFrame{
     
     public MainFrame(){
     	getContentPane().setLayout(borderLayout1);
-    	topF.setBackground(new Color(212, 154, 227));
+    	topF.setBackground(new Color(204, 153, 102));//#4682B4
 
         mainF.setLayout(gridLayout1);
         this.setResizable(false);
-        this.setTitle("个人记账系统--"+ConstService.user.getName());
+        this.setTitle("会员卡号管理系统--"+ConstService.user.getName());
         
-//        按钮设置
-    	acc_button.setBackground(Color.white);
-    	acc_button.setForeground(Color.blue);
-    	acc_button.setText("花销");
-    	acc_button.addMouseListener(new AccountMouseAdapter());
-    	
-    	in_button.setBackground(Color.white);
-    	in_button.setForeground(Color.blue);
-    	in_button.setText("收入");
-    	in_button.addMouseListener(new IncomeMouseAdapter());
-    	
-    	kind_button.setBackground(Color.white);
-    	kind_button.setForeground(Color.blue);
-    	kind_button.setText("分类管理");
-    	kind_button.addMouseListener(new KindMouseAdapter());
-    	
-    	diary_button.setBackground(Color.white);
-    	diary_button.setForeground(Color.blue);
-    	diary_button.setText("个人日记");
-    	diary_button.addMouseListener(new DiaryMouseAdapter());
-    	
     	user_button.setBackground(Color.white);
     	user_button.setForeground(Color.blue);
     	user_button.setText("个人信息");
@@ -108,13 +87,13 @@ public class MainFrame extends JFrame{
     	search.setText("查询");
     	search.addMouseListener(new CommonMouseAdapter(SearchPanel.class));
 //    	分隔符
-    	String slip = "--" ;
+    	String slip = "    |    " ;
     	
 //    	部署按钮
 
-    	topF.add(input);
-		topF.add(new JLabel(slip)) ;
     	topF.add(search);
+		topF.add(new JLabel(slip)) ;
+    	topF.add(input);
 		topF.add(new JLabel(slip)) ;
 //    	UserRank rank = ConstService.rank ;
 //    	if(rank.accunt=='1'){
