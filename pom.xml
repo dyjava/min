@@ -194,7 +194,7 @@
   						<goal>copy-dependencies</goal>
   					</goals>
   					<configuration>
-  						<outputDirectory>${basedir}/target/lib</outputDirectory>
+  						<outputDirectory>${basedir}/lib</outputDirectory>
   					</configuration>
   				</execution>
   			</executions>
